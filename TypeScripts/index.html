@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./component.js" defer></script>
+    <script src="./elements/nav.element.js" defer></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav-bar links="[{url: '#', name:'home'},{url: '#', name:'about'}]" value="logo"></nav-bar>
+    <pha-text id="as" palabra="next">start</pha-text>
+
+    <script>
+        document.getElementById("as").setAttribute("palabra", "yes");
+        fetch("http://movienight21012.herokuapp.com/roles", {
+            method: 'GET',
+            headers: {
+                "Origin": "*",
+                "Access-Control-Request-Method": "GET",
+                "Access-Control-Request-Headers": "Content-Type"
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            //console.log(data.list[0]);
+            document.getElementById("as").palabra = /*JSON.stringify(*/data.list[0]/*)*/;
+            //document.getElementById("as").update();
+        });
+    </script>
+</body>
+</html>
