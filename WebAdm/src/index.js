@@ -16,6 +16,8 @@ app.use('/api', require('./routes/task'));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Para todo trafico se envia el index.html
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
