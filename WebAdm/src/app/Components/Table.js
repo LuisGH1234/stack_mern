@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 class Table extends React.Component {
     constructor(props) {
         super(props);
+        this.taskRows = this.taskRows.bind(this);
     }
 
     static propTypes = {
@@ -31,41 +32,44 @@ class Table extends React.Component {
         }
     }
 
+    taskRows(task, index) {
+        const { onEdit } = this.props;
+        return (
+            <tr key={ task._id }>
+                <td>{ task.title }</td>
+                <td>{ task.desc }</td>
+                <td>
+                    <button id={`delete_task-${index}`} className="btn light-blue darken-4" onClick={() => this.deleteTask(task._id)}>
+                        <i className="material-icons">delete</i>
+                    </button>
+                    <button id={`edit_task-${index}`} className="btn light-blue darken-4" onClick={(e) => onEdit(task)} style={{marginLeft: "4px"}}>
+                        <i className="material-icons">edit</i>
+                    </button>
+                </td>
+            </tr>
+        );
+    }
+
     render() {
         //console.log("renderiza table.js");
-        const { onEdit, tasks } = this.props;
+        const { tasks } = this.props;
         return(
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Description</th>
-                            <th>Configuration</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            tasks.map((task, index) => {
-                                return (
-                                    <tr key={ task._id }>
-                                        <td>{ task.title }</td>
-                                        <td>{ task.desc }</td>
-                                        <td>
-                                            <button id={`delete_task-${index}`} className="btn light-blue darken-4" onClick={() => this.deleteTask(task._id)}>
-                                                <i className="material-icons">delete</i>
-                                            </button>
-                                            <button id={`edit_task-${index}`} className="btn light-blue darken-4" onClick={(e) => onEdit(tasks[index])} style={{margin: "4px"}}>
-                                                <i className="material-icons">edit</i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                );
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>
+                <div className="card-content tasks-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Configuration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                tasks.map(this.taskRows)
+                            }
+                        </tbody>
+                    </table>
+                </div>
         );
     }
 }

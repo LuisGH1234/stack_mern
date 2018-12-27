@@ -1,0 +1,33 @@
+/*a:hover {
+    background-color: rgb(24, 214, 24);
+}*/
+
+.poper {
+    font-family: cursive;
+    position: relative;
+    display: inline-block; /* Para que su anch y alto ocupe su propio tamaño */
+    /*border-bottom: 1px dotted black;*/
+    text-align: center;
+
+    &:hover {
+        .popup {
+            visibility: visible;
+        }
+    }
+
+    .popup {
+        visibility: hidden;
+        width: 120px;
+        background-color: red;
+        color: #fff;
+        text-align: center;
+        padding: 5px;
+        border-radius: 6px;
+
+
+        line-height: 1.8em;
+        height: 1.8em;
+        position: absolute;
+        z-index: 1; /* 1: Por encima de cualquier elemento (flotando), -1: por debajo */
+    }
+}

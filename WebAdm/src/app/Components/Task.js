@@ -54,16 +54,12 @@ class Task extends React.Component {
     render() {
         //console.log("renderiza app.js");
         return (
-            <div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col s5">
-                            <Entry task={this.state} onHandle={this.handleChange} onSend={this.clearState}/>
-                        </div>
-                        <div className="col s7">
-                            <Table tasks={this.state.tasks}  onEdit={this.onTableEdit} fetchTasks={this.fetchTasks}/>
-                        </div>
-                    </div>
+            <div className="container">
+                <div className="col">
+                    <Entry task={this.state} onHandle={this.handleChange} onSend={this.clearState}/>
+                </div>
+                <div className="col">
+                    <Table tasks={this.state.tasks}  onEdit={this.onTableEdit} fetchTasks={this.fetchTasks}/>
                 </div>
             </div>
         );

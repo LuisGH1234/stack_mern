@@ -1,0 +1,114 @@
+@function Columns($nCol) {
+    @return calc(100% * ($ncol / 12));
+}
+
+@function Width($element-wPadding, $element-wBorder) {
+    $less-padding: calc(var($element-wPadding) * 2);
+    $less-border: calc(var($element-wBorder) * 2);
+    @return calc(100% - #{$less-border} - #{$less-padding});
+}
+
+@mixin Border($border-width, $border-style, $border-color, $border-radius) {
+    border: $border-width $border-style $border-color;
+    border-radius: $border-radius;
+}
+
+%center-content {
+    text-align: -webkit-center;
+    margin: auto;
+}
+
+div.container {
+    display: grid;
+    grid-template-columns: 40% 1fr;
+
+    @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+    }
+
+    .block {
+        display: block;
+    }
+    
+    .col {
+        text-align: -webkit-center;
+    }
+
+    .card {
+        padding: 4px;
+        display: flex;
+
+        .card-content {
+            padding: 8px;
+        }
+
+    }
+    .card-content {
+        padding: 4px;
+        display: table;
+        width: calc(100% - 4px);
+
+        &[class~=bordered] { //lo mismo que hacer &.bordered
+            @include Border(4px, double, grey, 10px);
+        }
+    }
+
+    .entry {
+        .input-field {
+            display: block;
+            padding: 2px 2px;
+            --inputs-horizontal-padding: 2px;
+            --inputs-border-width: 2px;
+
+            & > input[type=text], & > textarea {
+                padding: 0 var(--inputs-horizontal-padding);
+                width: calc(100% - (var(--inputs-horizontal-padding) + var(--inputs-border-width)) * 2);
+                @include Border(var(--inputs-border-width), solid, lighten(grey, 20), 2px);
+                
+                &:focus {
+                    outline: groove 1.5px lighten($color: red, $amount: 12);
+                    outline-offset: -1.50px;
+                    transition: 10ms;
+                }
+            }
+        }
+    }
+
+    .tasks-table {
+        table {
+            --border-radius: 5px;
+            @include Border(1px, solid, purple, var(--border-radius));
+            overflow: hidden;
+            thead {
+                background-color: blue;
+                /*border-top-left-radius: var(--border-radius);
+                border-top-right-radius: var(--border-radius);
+                & > tr:first-child {
+                    th:first-child {
+                        border-top-left-radius: var(--border-radius) - 2.5px; 
+                    }
+                    th:last-child {
+                        border-top-right-radius: var(--border-radius) - 2.5px;
+                    }
+                }*/
+                
+            }
+
+            th, td {
+                padding: 3px 7px;
+            }
+
+            tbody {
+                tr {
+                    td {
+                        border-bottom: 1px solid black;
+                        &:not(:last-child) {
+                            border-right: 1px solid black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

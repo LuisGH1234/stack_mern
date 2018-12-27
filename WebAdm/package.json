@@ -7,12 +7,16 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "webpack": "webpack --mode development --watch",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "style": "sass --watch src/app/sass/style.scss src/public/css/style.css --style expanded",
+    "style-folder": "sass --watch src/app/sass:src/app/css --style expanded",
+    "style-build": "sass src/app/sass:src/app/css --style compressed"
   },
   "keywords": [],
-  "author": "",
+  "author": "Luis Alejandro Galindo Honores",
   "license": "ISC",
   "dependencies": {
+    "boostrap": "^2.0.0",
     "express": "^4.16.4",
     "mongoose": "^5.3.14",
     "morgan": "^1.9.1"
@@ -24,11 +28,14 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
     "babel-polyfill": "^6.26.0",
+    "css-loader": "^2.0.1",
     "nodemon": "^1.18.7",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
+    "sass": "^1.15.2",
+    "style-loader": "^0.23.1",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2"
   }

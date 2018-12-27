@@ -73,16 +73,16 @@ class Entry extends React.Component {
         //this.state = this.props.task; //es un anti patron
         const { title, desc } = this.props.task;
         return(
-            <div className="card">
-                <div className="card-content">
+            <div className="card entry">
+                <div className="card-content bordered">
                     <form onSubmit={this.addTask}>
-                        <div className="row">
-                            <div className="input-field col s12">
+                        <div className="block">
+                            <div className="input-field">
                                 <input name="title" onChange={this.props.onHandle} type="text" placeholder="Title" value={title}/>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s12">
+                        <div className="block">
+                            <div className="input-field">
                                 <textarea name="desc" onChange={this.props.onHandle} placeholder="Description" className="materialize-textarea" value={desc}></textarea>
                             </div>
                         </div>

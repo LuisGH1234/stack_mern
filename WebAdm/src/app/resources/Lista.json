@@ -1,0 +1,22 @@
+[
+    {
+        "fol_name": ".about",
+        "comm": "updated to boostrap 4.1.3",
+        "timed": "a month ago"
+    },
+    {
+        "fol_name": ".idea",
+        "comm": "updated to boostrap 4.1.3",
+        "timed": "a month ago"
+    },
+    {
+        "fol_name": "src",
+        "comm": "updated to boostrap 4.1.3",
+        "timed": "a month ago"
+    },
+    {
+        "fol_name": "package.json",
+        "comm": "added dependencies",
+        "timed": "a year ago"
+    }
+]

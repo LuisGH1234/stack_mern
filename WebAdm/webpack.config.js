@@ -10,6 +10,13 @@ module.exports = {
                 use: 'babel-loader',
                 test: /\.js$/,
                 exclude: /node_modules/
+            },
+            {
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ],
+                test: /\.css$/
             }
         ]
     },
