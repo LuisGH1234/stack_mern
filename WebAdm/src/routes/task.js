@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router();
-//const Task = require('../model/task');
-
-const Tasks = require('./tasks.json');
+const Task = require('../model/task');
 
 router.get('/', async (_, res) => {
     try {
-        //const tasks = await Task.find();
-        //res.json(tasks);    
-        res.json(Tasks);
+        const tasks = await Task.find();
+        res.json(tasks);    
     } catch (error) {
         console.log('Error: ' + error);
         res.json({ status: 'error' });
