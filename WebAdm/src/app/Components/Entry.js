@@ -48,7 +48,7 @@ class Entry extends React.Component {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                M.toast({ html: 'Task Saved' });
+                //M.toast({ html: 'Task Saved' });
                 this.props.onSend();
             })
             .catch(err => console.log(err));

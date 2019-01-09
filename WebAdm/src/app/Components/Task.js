@@ -1,6 +1,7 @@
 import React from 'react';
 import Table from './Table.js';
 import Entry from './Entry';
+import { throws } from 'assert';
 
 class Task extends React.Component {
 
@@ -24,7 +25,12 @@ class Task extends React.Component {
 
     fetchTasks() {
         fetch('/api/')
-        .then(res => res.json())
+        .then(res => {
+            if(res.status === 500) {
+                return this.state.tasks;
+            }
+            return res.json()
+        })
         .then(tasks => {
             this.setState({ tasks });
         })
